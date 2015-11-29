@@ -71,9 +71,9 @@ function clearText(field)
             <li><a href="index.jsp">Home</a></li>
             <li><a href="products.jsp">Products</a>
                 <ul>
-                    <li><a href="#">Sub menu 1</a></li>
-                    <li><a href="#">Sub menu 2</a></li>
-                    <li><a href="#">Sub menu 3</a></li>
+                    <li><a href="products.jsp?category=Arts">Arts</a></li>
+                    <li><a href="products.jsp?category=Biographies">Biographies</a></li>
+                    <li><a href="products.jsp?category=Cookbooks">Cookbooks</a></li>
               </ul>
             </li>
 

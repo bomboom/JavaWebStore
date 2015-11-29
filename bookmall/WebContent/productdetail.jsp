@@ -77,9 +77,9 @@ function clearText(field)
             <li><a href="index.jsp">Home</a></li>
             <li><a href="products.jsp" class="selected">Products</a>
                 <ul>
-                    <li><a href="#">Sub menu 1</a></li>
-                    <li><a href="#">Sub menu 2</a></li>
-                    <li><a href="#">Sub menu 3</a></li>
+                   <li><a href="products.jsp?category=Arts">Arts</a></li>
+                    <li><a href="products.jsp?category=Biographies">Biographies</a></li>
+                    <li><a href="products.jsp?category=Cookbooks">Cookbooks</a></li>
               </ul>
             </li>
            
@@ -95,9 +95,9 @@ function clearText(field)
         <div id="sidebar">
         	<h3>Categories</h3>
             <ul class="sidebar_menu">
-			    <li><a href="#">Aenean et dolor diam</a></li>
-                <li><a href="#">Aenean pulvinar</a></li>				
-                <li><a href="#">Cras bibendum auctor</a></li>
+			     <li><a href="products.jsp?category=Arts">Arts</a></li>
+                    <li><a href="products.jsp?category=Biographies">Biographies</a></li>
+                    <li><a href="products.jsp?category=Cookbooks">Cookbooks</a></li>
 			</ul>
             <h3>Newsletter</h3>
             <p>Praesent aliquam mi id tellus pretium pulvinar in vel ligula.</p>
