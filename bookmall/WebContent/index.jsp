@@ -18,6 +18,63 @@
 
 </script>
 
+
+
+<script type="text/javascript">            //AJAX for login
+            var xmlHttp=false;      
+            function createXMLHttpRequest() {
+                if (window.ActiveXObject){
+                     xmlHttp = new                                    ActiveXObject("Microsoft.XMLHTTP");
+                   }else if (window.XMLHttpRequest){
+                     xmlHttp = new XMLHttpRequest();
+                 }  
+            }
+function check(){
+createXMLHttpRequest();
+xmlHttp.onreadystatechange=callback;  
+            nameStr=myform.name.value;
+            passStr=myform.pass.value;
+var url="check?name="+nameStr+"&pass="+passStr; 
+//servlet/check
+xmlHttp.open("get",url);      //request
+xmlHttp.setRequestHeader("ContentType","application/x-www-form-urlencoded;charset=UTF-8");
+xmlHttp.send(null); 
+}
+function callback(){
+        if(xmlHttp.readyState==4){  
+        if(xmlHttp.status==200){
+    var str = xmlHttp.responseText;
+            alert(str);
+if(str.length==2){    //document.getElementById("state").innerHTML="login";
+var tdName=document.getElementById("tdName");
+                            tdName.replaceChild(document.createTextNode(nameStr),tdName.firstChild);
+ var tdPass=document.getElementById("pwdBox");
+ tdPass.innerHTML="";
+var trButtom=document.getElementById("buttom");
+trButtom.innerHTML='<font color=\"red\">successful</font>  
+<div> 
+<input type="button" onclick="exit()" value="quit" /></div>';
+        trButtom.name="yes"; 
+             }else{
+                            document.getElementById("state").innerHTML="<font color=\"red\">Wrong password or username</font>";
+                        }   
+                    }
+                }       
+            }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script type="text/javascript">
 
 ddsmoothmenu.init({
@@ -77,15 +134,25 @@ SELECT * from book;
         	<h1><a rel="nofollow" href="http://sc.chinaz.com/preview/templatemo_341_web_store">Book Store</a></h1>
         </div>
         
+        
+        <div><form id="myform" action="" method="post">
+    			<p align="right">ID:<span id="tdName"><input type="text" id="userName" name="name" /></span><span id="pwdBox"> Password:<span id="tdPass"><input type="password" id="userPass" name="pass" /></span></span><span id="state"></span><span> <input type="button" onClick="check()" value="login" /></span></p>
+   		 </form>
+		</div>
+   		
+        
         <div id="header_right">
-            
+           
+    
             <div class="cleaner"></div>
+
             <div id="templatemo_search">
                 <form action="products.jsp" method="get">
                   <input type="text" value="Search" name="keyword" id="keyword" title="keyword" onfocus="clearText(this)" onblur="clearText(this)" class="txt_field" />
                   <input type="submit" name="Search" value="" alt="Search" id="searchbutton" title="Search" class="sub_btn"  />
                 </form>
-            </div>
+			</div>
+          
          </div> <!-- END -->
     </div> <!-- END of header -->
     

@@ -25,7 +25,16 @@
 			<url-pattern>/processCart</url-pattern>
 		</servlet-mapping>
 		 
-		 
+		<servlet>
+			<servlet-name>check</servlet-name>
+			<servlet-class>bookmall.servlet.CheckUser</servlet-class>
+			<load-on-startup>1</load-on-startup>
+		</servlet>
+		<servlet-mapping>
+			<servlet-name>check</servlet-name>
+			<url-pattern>/check</url-pattern>
+		</servlet-mapping> 
+		
 		  <welcome-file-list>
 		    <welcome-file>index.jsp</welcome-file>
 		  </welcome-file-list>
