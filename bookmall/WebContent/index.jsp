@@ -18,63 +18,6 @@
 
 </script>
 
-
-
-<script type="text/javascript">            //AJAX for login
-            var xmlHttp=false;      
-            function createXMLHttpRequest() {
-                if (window.ActiveXObject){
-                     xmlHttp = new                                    ActiveXObject("Microsoft.XMLHTTP");
-                   }else if (window.XMLHttpRequest){
-                     xmlHttp = new XMLHttpRequest();
-                 }  
-            }
-function check(){
-createXMLHttpRequest();
-xmlHttp.onreadystatechange=callback;  
-            nameStr=myform.name.value;
-            passStr=myform.pass.value;
-var url="check?name="+nameStr+"&pass="+passStr; 
-//servlet/check
-xmlHttp.open("get",url);      //request
-xmlHttp.setRequestHeader("ContentType","application/x-www-form-urlencoded;charset=UTF-8");
-xmlHttp.send(null); 
-}
-function callback(){
-        if(xmlHttp.readyState==4){  
-        if(xmlHttp.status==200){
-    var str = xmlHttp.responseText;
-            alert(str);
-if(str.length==2){    //document.getElementById("state").innerHTML="login";
-var tdName=document.getElementById("tdName");
-                            tdName.replaceChild(document.createTextNode(nameStr),tdName.firstChild);
- var tdPass=document.getElementById("pwdBox");
- tdPass.innerHTML="";
-var trButtom=document.getElementById("buttom");
-trButtom.innerHTML='<font color=\"red\">successful</font>  
-<div> 
-<input type="button" onclick="exit()" value="quit" /></div>';
-        trButtom.name="yes"; 
-             }else{
-                            document.getElementById("state").innerHTML="<font color=\"red\">Wrong password or username</font>";
-                        }   
-                    }
-                }       
-            }
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
 <script type="text/javascript">
 
 ddsmoothmenu.init({
@@ -114,7 +57,63 @@ ddsmoothmenu.init({
 		if (field.defaultValue == field.value) field.value = '';
 		else if (field.value == '') field.value = field.defaultValue;
 	}
-</script>
+
+	
+	
+	
+	
+	//AJAX Login
+	
+	var xmlHttp=false;      
+	function createXMLHttpRequest() {
+	                if (window.XMLHttpRequest){
+	                     xmlHttp = new XMLHttpRequest();
+	                 }else{
+	                	 xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+	                 }
+	            }
+	            
+	function check(){
+		createXMLHttpRequest();
+		xmlHttp.onreadystatechange=callback;  
+		nameStr=document.myform.name.value;
+		passStr=document.myform.pass.value;
+		
+		var url="check?name="+nameStr+"&pass="+passStr; 
+		//servlet/check
+		xmlHttp.open("get",url, true);      //request
+		xmlHttp.setRequestHeader("ContentType","application/x-www-form-urlencoded;");
+		xmlHttp.send(null); 
+		document.getElementById("state").innerHTML = "login..";
+		window.print();
+	}
+
+	function callback(){
+	    if(xmlHttp.readyState==4){  
+	        if(xmlHttp.status==200){
+	    		var str = xmlHttp.responseText;
+	            alert(str);
+				if(str.length==2){    //document.getElementById("state").innerHTML="login";
+					var tdName=document.getElementById("tdName");
+	                tdName.replaceChild(document.createTextNode(nameStr),tdName.firstChild);
+	 				var tdPass=document.getElementById("pwdBox");
+	 				tdPass.innerHTML="order";
+					var trButtom=document.getElementById("buttom");
+					trButtom.innerHTML='<font color=\"red\">successful</font>';
+					<div><input type="button" onclick="exit()" value="quit"/</div>;
+	        		trButtom.name="yes";
+	             }else{
+	                            document.getElementById("state").innerHTML="<font color=\"red\">Wrong password or username</font>";
+	                        }   
+	                    }
+	                }       
+	            }
+	
+	
+	
+	
+	
+	</script>
 
 </head>
 
@@ -136,7 +135,8 @@ SELECT * from book;
         
         
         <div><form id="myform" action="" method="post">
-    			<p align="right">ID:<span id="tdName"><input type="text" id="userName" name="name" /></span><span id="pwdBox"> Password:<span id="tdPass"><input type="password" id="userPass" name="pass" /></span></span><span id="state"></span><span> <input type="button" onClick="check()" value="login" /></span></p>
+    			<p align="right">ID:<span id="tdName"><input type="text" id="userName" name="name" /></span><span id="pwdBox"> Password:<span id="tdPass"><input type="password" id="userPass" name="pass" /></span></span><span> <input type="button" onclick="check()" value="login" /></span></p>
+   		 		<span id="state"></span>
    		 </form>
 		</div>
    		

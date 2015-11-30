@@ -17,9 +17,11 @@ public class CheckUser extends HttpServlet{
 		try{
 			if(us.check()){
 				out.print("aa");
+				System.out.println("aa");
 				request.getSession().setAttribute("name", id);
 			}else{
 				out.print("a");
+				System.out.println("a");
 			}
 		}catch(Exception e){
 				out.print(e.toString());

@@ -18,7 +18,7 @@ public class ConnDB {
 			Class.forName(driver);
 			conn = DriverManager.getConnection(URL, user, password);
 			if(!conn.isClosed()){
-				System.out.println("Succeeded connecting DB");
+				//System.out.println("Succeeded connecting DB");
 			}
 		}
 		catch (Exception ee){
@@ -40,7 +40,7 @@ public class ConnDB {
 		catch (SQLException ex){
 			System.out.println(ex.getMessage());
 		}
-		System.out.println(sql);
+		//System.out.println(sql);
 		return rs;	//return result
 	}
 	
