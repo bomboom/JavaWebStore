@@ -57,8 +57,17 @@ function clearText(field)
 <div id="templatemo_wrapper">
 	<div id="templatemo_header">
     	<div id="site_title">
-        	<h1><a rel="nofollow" href="http://sc.chinaz.com/preview/templatemo_341_web_store">Book Store</a></h1>
+        	<h1><a rel="nofollow" href="#">Book Store</a></h1>
         </div>
+        
+        <div>
+    			<p align="right">
+    			ID:<%=request.getSession().getAttribute("id") %>
+ 				<a href="order.jsp?id=<%=request.getSession().getAttribute("id") %>">order</a>
+ 				<input type="button" onclick="exit()" value="quit"/>
+    			</p>
+		</div>
+        
         
         <div id="header_right">
             

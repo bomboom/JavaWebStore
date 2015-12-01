@@ -59,55 +59,50 @@ ddsmoothmenu.init({
 	}
 
 	
-	
-	
-	
 	//AJAX Login
-	
-	var xmlHttp=false;      
-	function createXMLHttpRequest() {
-	                if (window.XMLHttpRequest){
-	                     xmlHttp = new XMLHttpRequest();
-	                 }else{
-	                	 xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
-	                 }
-	            }
+	var xmlHttp = false; 
+	function createXMLHttpRequest() { 
+		if (window.XMLHttpRequest) {
+	        //IE7, Firefox, Opera
+	        xmlHttp = new XMLHttpRequest();
+	    } else if (window.ActiveXObject) {
+	        //IE5,IE6  
+	        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+	    }
+	}
 	            
 	function check(){
-		createXMLHttpRequest();
-		xmlHttp.onreadystatechange=callback;  
-		nameStr=document.myform.name.value;
-		passStr=document.myform.pass.value;
+		createXMLHttpRequest();  
+		nameStr=myform.name.value;
+		passStr=myform.pass.value;
 		
-		var url="check?name="+nameStr+"&pass="+passStr; 
+		var url="check?name="+nameStr+"&pass="+passStr;
 		//servlet/check
 		xmlHttp.open("get",url, true);      //request
-		xmlHttp.setRequestHeader("ContentType","application/x-www-form-urlencoded;");
+		xmlHttp.onreadystatechange = callback;
+		xmlHttp.setRequestHeader("ContentType","application/x-www-form-urlencoded;charset=UTF-8");
 		xmlHttp.send(null); 
-		document.getElementById("state").innerHTML = "login..";
-		window.print();
+		//window.print();
 	}
 
 	function callback(){
-	    if(xmlHttp.readyState==4){  
-	        if(xmlHttp.status==200){
+	    if(xmlHttp.readyState==4 && xmlHttp.status==200){  
 	    		var str = xmlHttp.responseText;
-	            alert(str);
+	    		alert(str);
 				if(str.length==2){    //document.getElementById("state").innerHTML="login";
 					var tdName=document.getElementById("tdName");
 	                tdName.replaceChild(document.createTextNode(nameStr),tdName.firstChild);
 	 				var tdPass=document.getElementById("pwdBox");
-	 				tdPass.innerHTML="order";
+	 				var dir = "order.jsp?id="+nameStr;
+	 				tdPass.innerHTML='<a href="'+dir+'"">order</a>';
 					var trButtom=document.getElementById("buttom");
-					trButtom.innerHTML='<font color=\"red\">successful</font>';
-					<div><input type="button" onclick="exit()" value="quit"/</div>;
+					trButtom.innerHTML='<input type="button" onclick="exit()" value="quit"/>';
 	        		trButtom.name="yes";
 	             }else{
-	                            document.getElementById("state").innerHTML="<font color=\"red\">Wrong password or username</font>";
-	                        }   
-	                    }
-	                }       
-	            }
+					alert("wrong password!");
+				}   
+		}      
+	}
 	
 	
 	
@@ -130,22 +125,34 @@ SELECT * from book;
 <div id="templatemo_wrapper">
 	<div id="templatemo_header">
     	<div id="site_title">
-        	<h1><a rel="nofollow" href="http://sc.chinaz.com/preview/templatemo_341_web_store">Book Store</a></h1>
+        	<h1><a rel="nofollow" href="#">Book Store</a></h1>
         </div>
         
-        
-        <div><form id="myform" action="" method="post">
-    			<p align="right">ID:<span id="tdName"><input type="text" id="userName" name="name" /></span><span id="pwdBox"> Password:<span id="tdPass"><input type="password" id="userPass" name="pass" /></span></span><span> <input type="button" onclick="check()" value="login" /></span></p>
-   		 		<span id="state"></span>
+      
+        <div>
+        <% if(request.getSession().getAttribute("id")==null){ %>
+        <form id="myform" action="" method="post">
+    			<p align="right">
+    			ID:<span id="tdName"><input type="text" id="userName" name="name" /></span>
+    			<span id="pwdBox"> Password:<span id="tdPass"><input type="password" id="userPass" name="pass" /></span></span>
+    			<span id="buttom"><input type="button" onclick="check()" value="login" /></span>
+ 
+    			</p>
    		 </form>
+   		 <%}else{ %>
+   		 		<p align="right">
+   		 		ID:<%=request.getSession().getAttribute("id") %>
+ 				<a href="order.jsp?id=<%=request.getSession().getAttribute("id") %>">order</a>
+ 				<input type="button" onclick="exit()" value="quit"/>
+   		 		</p>
+   		 <% }%>
 		</div>
    		
         
         <div id="header_right">
-           
     
             <div class="cleaner"></div>
-
+		
             <div id="templatemo_search">
                 <form action="products.jsp" method="get">
                   <input type="text" value="Search" name="keyword" id="keyword" title="keyword" onfocus="clearText(this)" onblur="clearText(this)" class="txt_field" />

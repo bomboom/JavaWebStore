@@ -44,6 +44,18 @@ public class ConnDB {
 		return rs;	//return result
 	}
 	
+	public void insert(String sql) {
+		try {
+			conn = getConnection();
+			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+										ResultSet.CONCUR_READ_ONLY);
+			stmt.executeUpdate(sql);	
+		}
+		catch (SQLException ex){
+			System.out.println(ex.getMessage());
+		}
+	}
+	
 	public void close() {
 		try {
 			rs.close();

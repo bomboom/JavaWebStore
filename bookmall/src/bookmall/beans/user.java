@@ -10,6 +10,7 @@ public class user {
 	
 	public boolean check() throws Exception{
 		checkSQL(this.user_id, this.pwd);
+		//System.out.println(this.ok);
 		return this.ok;
 	}
 	
@@ -22,7 +23,7 @@ public class user {
 	}
 	
 	public void setPwd(String Pwd){
-		this.pwd=pwd;
+		this.pwd = Pwd;
 	}
 	
 	public String getPwd(){
@@ -32,6 +33,7 @@ public class user {
 	public void checkSQL(String id, String pwd) throws Exception{
 		ConnDB db = new ConnDB();
 		String sql = "select * from user where username='"+id+"' and password='"+pwd+"'";
+		//System.out.print(sql);
 		ResultSet rs = db.executeQuery(sql);
 		if(rs.next()){
 			this.ok = true;

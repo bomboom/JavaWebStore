@@ -38,10 +38,19 @@ function clearText(field)
 <div id="templatemo_wrapper">
 	<div id="templatemo_header">
     	<div id="site_title">
-        	<h1><a rel="nofollow" href="http://sc.chinaz.com/preview/templatemo_341_web_store">Book Store</a></h1>
+        	<h1><a rel="nofollow" href="#">Book Store</a></h1>
         </div>
-        
-        <div id="header_right">
+
+        <div>
+    			<p align="right">
+    			ID:<%=request.getSession().getAttribute("id") %>
+ 				<a href="order.jsp?id=<%=request.getSession().getAttribute("id") %>">order</a>
+ 				<input type="button" onclick="exit()" value="quit"/>
+    			</p>
+		</div>
+
+
+		<div id="header_right">
             <div class="cleaner"></div>
             <div id="templatemo_search">
                 <form action="products.jsp" method="get">
@@ -75,29 +84,31 @@ function clearText(field)
         <div id="content">
        		<h2>Checkout</h2>
             <h5><strong>BILLING DETAILS</strong></h5>
-            <div class="col col_13 checkout">
-				Enter your full name as it is on the credit card:                				<input type="text"  style="width:300px;"  />
-                Address:
-                <input type="text"  style="width:300px;"  />
-                City:
-                <input type="text"  style="width:300px;"  />
-                Country:
-                <input type="text"  style="width:300px;"  />
-            </div>
+            <form action="AddOrder">
+	            <div class="col col_13 checkout">
+					Enter your full name as it is on the credit card:                				<input type="text"  style="width:300px;"  />
+	                Address:
+	                <input type="text" name="addr" style="width:300px;"  />
+	                City:
+	                <input type="text" name="city" style="width:300px;"  />
+	                Country:
+	                <input type="text" name="country" style="width:300px;"  />
+	            </div>
             
-            <div class="col col_13 checkout">
-            	E-MAIL
-				<input type="text"  style="width:300px;"  />
-                PHONE<br />
-				<span style="font-size:10px">Please, specify your reachable phone number. YOU MAY BE GIVEN A CALL TO VERIFY AND COMPLETE THE ORDER.</span>
-                <input type="text"  style="width:300px;"  />
-            </div>
-            
-            <div class="cleaner h50"></div>
-            <h3>Shopping Cart</h3>
-            <h4>TOTAL: <strong>$<%=request.getParameter("total") %></strong></h4>
-			<p><a  rel="lightbox[portfolio]" href="images/finish.jpeg" target=_blank>Place Order</a></p>
-
+	            <div class="col col_13 checkout">
+	            	E-MAIL
+					<input type="text" name="email" style="width:300px;"  />
+	                PHONE<br />
+					<span style="font-size:10px">Please, specify your reachable phone number. YOU MAY BE GIVEN A CALL TO VERIFY AND COMPLETE THE ORDER.</span>
+	                <input type="text" name="phone" style="width:300px;"  />
+	            </div>
+	            
+	            <div class="cleaner h50"></div>
+	            <h3>Shopping Cart</h3>
+	            <input type="hidden" name="total" value=<%=request.getParameter("total") %> />
+	            <h4>TOTAL: <strong>$<%=request.getParameter("total") %></strong></h4>
+				<p><a  rel="lightbox[portfolio]" href="images/finish.jpeg" target=_blank><input type="submit" name="action" value="Place Order"/></a></p>
+		</form>
 		</div>
         <div class="cleaner"></div>
     </div> <!-- END of main -->
