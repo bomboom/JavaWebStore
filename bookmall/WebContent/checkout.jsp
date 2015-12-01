@@ -71,7 +71,7 @@ function clearText(field)
                     <li><a href="products.jsp?category=Cookbooks">Cookbooks</a></li>
               </ul>
             </li>
-            <li><a href="cart.jsp">Cart</a></li>
+            <li><a href="shoppingcart.jsp">Cart</a></li>
         </ul>
         <br style="clear: left" />
     </div> <!-- end of templatemo_menu -->

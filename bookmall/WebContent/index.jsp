@@ -88,7 +88,7 @@ ddsmoothmenu.init({
 	function callback(){
 	    if(xmlHttp.readyState==4 && xmlHttp.status==200){  
 	    		var str = xmlHttp.responseText;
-	    		alert(str);
+	    		//alert(str);
 				if(str.length==2){    //document.getElementById("state").innerHTML="login";
 					var tdName=document.getElementById("tdName");
 	                tdName.replaceChild(document.createTextNode(nameStr),tdName.firstChild);
@@ -105,8 +105,22 @@ ddsmoothmenu.init({
 	}
 	
 	
+	function quit(){
+		createXMLHttpRequest();
+		var url="quit";
+		//servlet/quit
+		xmlHttp.open("get",url, true);
+		xmlHttp.onreadystatechange = call;
+		xmlHttp.setRequestHeader("ContentType","application/x-www-form-urlencoded;charset=UTF-8");
+		xmlHttp.send(null); 
+	}
 	
-	
+	function call(){
+		if(xmlHttp.readyState==4 && xmlHttp.status==200){  
+    		var str = xmlHttp.responseText;
+    		window.location.href("index.jsp");
+    	}
+	}
 	
 	</script>
 

@@ -37,7 +37,7 @@ public class OrderDao {
 		float an = Float.parseFloat(total);
 		String sql = "insert into orders values('"+username+"','"+ADDR+"','"+email+"','"+phone+"',"+an+")";
 		ConnDB a = new ConnDB();
-		System.out.println(sql);
+		//System.out.println(sql);
 		
 		try{
 			a.insert(sql);;

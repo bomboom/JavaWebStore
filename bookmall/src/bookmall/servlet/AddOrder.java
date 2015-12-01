@@ -18,14 +18,14 @@ public class AddOrder extends HttpServlet {
 			String total = request.getParameter("total");
 			String action = request.getParameter("action");
 			
-			System.out.println(addr+city+country+email+phone+id+total+action);
+			//System.out.println(addr+city+country+email+phone+id+total+action);
 			
 			if(action.equals("Place Order")){
 				OrderDao od = new OrderDao();
 				od.SaveOrder(id, addr, city, country, email, phone, total);
 			}
 		}catch(Exception e){
-			System.out.println(e.toString());
+			//System.out.println(e.toString());
 		}
 		response.sendRedirect("images/finish.jpeg");
 	}

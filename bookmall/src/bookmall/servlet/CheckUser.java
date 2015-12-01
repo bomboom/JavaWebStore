@@ -17,6 +17,7 @@ public class CheckUser extends HttpServlet{
 		try{
 			if(us.check()){
 				out.print("aa");
+				request.getSession().invalidate();
 				request.getSession().setAttribute("id", id);
 			}else{
 				out.print("a");
