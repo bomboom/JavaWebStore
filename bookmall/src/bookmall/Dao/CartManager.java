@@ -67,6 +67,7 @@ public class CartManager {
 			Item temp = (Item)i.next();
 			if(temp.getBook().getBook_id()==bookid){
 				temp.setQuant(quant);
+				//System.out.println("good");
 				break;
 			}
 		}

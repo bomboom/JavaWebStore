@@ -137,7 +137,7 @@ function clearText(field)
                             <td align="right">$${item.book.price} </td> 
                             <td align="right">$${item.tot} </td>
                             <td align="center"> <input type="submit" name="action" value="remove"/></td>
-						</form>
+	
 						</tr>
 						</c:forEach>
 

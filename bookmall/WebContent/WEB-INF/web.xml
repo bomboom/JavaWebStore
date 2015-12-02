@@ -34,14 +34,6 @@
 			<url-pattern>/AddOrder</url-pattern>
 		</servlet-mapping>
 		
-		<servlet>
-			<servlet-name>quit</servlet-name>
-			<servlet-class>bookmall.servlet.Quit</servlet-class>
-		</servlet>
-		<servlet-mapping>
-			<servlet-name>quit</servlet-name>
-			<url-pattern>/quit</url-pattern>
-		</servlet-mapping>
 		 
 		<servlet>
 			<servlet-name>check</servlet-name>

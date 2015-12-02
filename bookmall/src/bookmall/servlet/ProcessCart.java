@@ -14,7 +14,7 @@ public class ProcessCart extends HttpServlet {
 		try{
 			String bookid = request.getParameter("bookid");
 			String action = request.getParameter("action");
-			
+			//System.out.println("2");
 			String quantity=null;
 			if(action.equals("update"))
 			{
@@ -26,6 +26,7 @@ public class ProcessCart extends HttpServlet {
 			cartManager.setCart(cart);
 			
 			if(action.equals("update")){
+				//System.out.println("1");
 				cartManager.update(Integer.parseInt(bookid), Integer.parseInt(quantity));
 			}else{
 				cartManager.delete(Integer.parseInt(bookid));

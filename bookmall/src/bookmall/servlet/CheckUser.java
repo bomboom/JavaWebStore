@@ -16,9 +16,10 @@ public class CheckUser extends HttpServlet{
 		us.setPwd(pass);
 		try{
 			if(us.check()){
+				request.getSession(true).setAttribute("id", id);
+				System.out.println(request.getSession(true).getAttribute("id"));
 				out.print("aa");
-				request.getSession().invalidate();
-				request.getSession().setAttribute("id", id);
+
 			}else{
 				out.print("a");
 				//System.out.println("a");

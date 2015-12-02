@@ -96,32 +96,39 @@ ddsmoothmenu.init({
 	 				var dir = "order.jsp?id="+nameStr;
 	 				tdPass.innerHTML='<a href="'+dir+'"">order</a>';
 					var trButtom=document.getElementById("buttom");
-					trButtom.innerHTML='<input type="button" onclick="exit()" value="quit"/>';
+					trButtom.innerHTML='<input type="button" onclick="quit()" value="quit"/>';
 	        		trButtom.name="yes";
 	             }else{
 					alert("wrong password!");
 				}   
 		}      
 	}
-	
-	
+	/*
+	var xml=false;
 	function quit(){
-		createXMLHttpRequest();
+		if (window.XMLHttpRequest) {
+	        //IE7, Firefox, Opera
+	        xml = new XMLHttpRequest();
+	    } else if (window.ActiveXObject) {
+	        //IE5,IE6  
+	        xml = new ActiveXObject("Microsoft.XMLHTTP");
+	    }
 		var url="quit";
 		//servlet/quit
-		xmlHttp.open("get",url, true);
-		xmlHttp.onreadystatechange = call;
-		xmlHttp.setRequestHeader("ContentType","application/x-www-form-urlencoded;charset=UTF-8");
-		xmlHttp.send(null); 
+		xml.open("get",url, true);
+		xml.onreadystatechange = call;
+		xml.setRequestHeader("ContentType","application/x-www-form-urlencoded;charset=UTF-8");
+		xml.send(null); 
 	}
 	
 	function call(){
-		if(xmlHttp.readyState==4 && xmlHttp.status==200){  
-    		var str = xmlHttp.responseText;
+		if(xml.readyState==4 && xml.status==200){  
+    		var str = xml.responseText;
+    		//alert(str);
     		window.location.href("index.jsp");
     	}
 	}
-	
+	*/
 	</script>
 
 </head>
@@ -157,7 +164,7 @@ SELECT * from book;
    		 		<p align="right">
    		 		ID:<%=request.getSession().getAttribute("id") %>
  				<a href="order.jsp?id=<%=request.getSession().getAttribute("id") %>">order</a>
- 				<input type="button" onclick="exit()" value="quit"/>
+ 				<input type="button" onclick="quit()" value="quit"/>
    		 		</p>
    		 <% }%>
 		</div>
