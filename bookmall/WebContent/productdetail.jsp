@@ -150,7 +150,7 @@ function clearText(field)
             <div class="cleaner h30"></div>
             
             <h5><strong>Product Description</strong></h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur semper quam sit amet turpis rhoncus id venenatis tellus sollicitudin. Fusce ullamcorper, dolor non mollis pulvinar, turpis tortor commodo nisl, et semper lectus augue blandit tellus. Quisque id bibendum libero.</p>	
+            <p><%=bookList.get(0).getText() %></p>	
             
             <div class="cleaner h50"></div>
             

@@ -1,7 +1,5 @@
-<%@ page import="java.io.*,java.util.*,java.sql.*"%>
-<%@ page import="javax.servlet.http.*,javax.servlet.*" %>
+<%@ page import="java.io.*,java.util.*,java.sql.*,bookmall.tool.ConnDB"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -135,13 +133,12 @@ ddsmoothmenu.init({
 
 <body id="home">
 
-<sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-     url="jdbc:mysql://localhost:3306/test"
-     user="root"  password="316591"/>
- 
-<sql:query dataSource="${snapshot}" var="result">
-SELECT * from book;
-</sql:query>
+<%
+	String sql = "select * from book";
+	ConnDB db = new ConnDB();
+	ResultSet rs = db.executeQuery(sql);
+	ResultSet bs = db.executeQuery(sql);
+%>
 
 <div id="templatemo_wrapper">
 	<div id="templatemo_header">
@@ -213,12 +210,12 @@ SELECT * from book;
                 <div id="SlideItMoo_inner">			
                     <div id="SlideItMoo_items">
                     
-                    	<c:forEach var="row" items="${result.rows}">
+                    	<%while(rs.next()){ %>
                         <div class="SlideItMoo_element">
                                 <a href="#slide1" target="_parent">
-                                <img src="${row.photo}" width="100px" height="135.5px"/></a>
+                                <img src="<%=rs.getString(6) %>" width="100px" height="135.5px"/></a>
                         </div>	
-         				</c:forEach>
+         				<%} %>
          
          
                     </div>			
@@ -249,15 +246,15 @@ SELECT * from book;
         <div id="content">
         
       	
-        	<c:forEach var="row" items="${result.rows}">
+        	<%while(bs.next()){ %>
         	
         	<div class="col col_14 product_gallery">
-            	<a href="productdetail.jsp?name=${row.book_id}"><img src="${row.photo}" width="200px" height="271px"/></a>
-                <h3>${row.name}</h3>
-                <p class="product_price">$ ${row.price}</p>
-                <a href="addToCart?bookid=${row.book_id}" class="add_to_cart">Add to Cart</a>
+            	<a href="productdetail.jsp?name=<%=bs.getInt(4)%>"><img src="<%=bs.getString(6) %>" width="200px" height="271px"/></a>
+                <h3><%=bs.getString(1) %></h3>
+                <p class="product_price">$ <%=bs.getFloat(3) %></p>
+                <a href="addToCart?bookid=<%=bs.getInt(4) %>" class="add_to_cart">Add to Cart</a>
             </div>        	
-            </c:forEach> 
+ 			<%} %>
             
             
             	

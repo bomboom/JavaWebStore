@@ -132,7 +132,7 @@ function clearText(field)
                     	<form action="processCart">
                     	<input type="hidden" name="bookid" value="${item.book.book_id}"/>
                         	<td><a href="productdetail.jsp?name=${item.book.book_id}"><img src="${item.book.photo}" width="50px" height="67.75px" /></a></td> 
-                        	<td>${item.book.book_id}</td> 
+                        	<td>${item.book.name}</td> 
                             <td align="center"><input type="text" name="quantity" value="${item.quant}" style="width: 20px; text-align: right"/></td>
                             <td align="right">$${item.book.price} </td> 
                             <td align="right">$${item.tot} </td>

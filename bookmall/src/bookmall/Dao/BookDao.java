@@ -22,6 +22,7 @@ public class BookDao {
 				book.setCategory(rs.getString(5));
 				book.setAuthor(rs.getString(2));
 				book.setPrice(rs.getFloat(3));
+				book.setText(rs.getString(7));
 				bookList.add(book);
 			}
 		}

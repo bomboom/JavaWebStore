@@ -7,6 +7,7 @@ public class Book {
 	private String name;
 	private String author;
 	private String category;
+	private String text;
 	
 	public String getCategory(){
 		return category;
@@ -54,6 +55,14 @@ public class Book {
 
 	public void setPhoto(String dir) {
 		this.photo = dir;
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
 	}
 
 }
