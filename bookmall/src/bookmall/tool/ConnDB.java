@@ -7,9 +7,9 @@ public class ConnDB {
 	public Statement stmt = null;
 	public ResultSet rs = null;
 	private static String driver = "com.mysql.jdbc.Driver";
-	private static String URL = "jdbc:mysql://localhost:3306/test";
+	private static String URL = "jdbc:mysql://192.168.99.100:32791/bookstore";
 	private static String user = "root";
-	private static String password = "316591";
+	private static String password = "admin";
 	
 	public static Connection getConnection() {
 		Connection conn = null;
