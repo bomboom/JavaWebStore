@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_3_1.xsd">
+ 
+		 <display-name></display-name>
+				 
+		 <servlet>
+		 	<servlet-name>addToCart</servlet-name>
+		 	<servlet-class>bookmall.servlet.AddToCart</servlet-class>
+		 </servlet>
+		 <servlet-mapping>
+		 	<servlet-name>addToCart</servlet-name>
+		 	<url-pattern>/addToCart</url-pattern>
+		 </servlet-mapping>
+		 
+		<servlet>
+			<servlet-name>processCart</servlet-name>
+			<servlet-class>bookmall.servlet.ProcessCart</servlet-class>
+		</servlet>
+		<servlet-mapping>
+			<servlet-name>processCart</servlet-name>
+			<url-pattern>/processCart</url-pattern>
+		</servlet-mapping>
+		
+		<servlet>
+			<servlet-name>AddOrder</servlet-name>
+			<servlet-class>bookmall.servlet.AddOrder</servlet-class>
+		</servlet>
+		<servlet-mapping>
+			<servlet-name>AddOrder</servlet-name>
+			<url-pattern>/AddOrder</url-pattern>
+		</servlet-mapping>
+		
+		 
+		<servlet>
+			<servlet-name>check</servlet-name>
+			<servlet-class>bookmall.servlet.CheckUser</servlet-class>
+		</servlet>
+		<servlet-mapping>
+			<servlet-name>check</servlet-name>
+			<url-pattern>/check</url-pattern>
+		</servlet-mapping> 
+		
+		
+		  <welcome-file-list>
+		    <welcome-file>index.jsp</welcome-file>
+		  </welcome-file-list>
+</web-app>
