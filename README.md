@@ -1,4 +1,4 @@
-# bookmail2
+# JavaWebStore
 
 Es un ejemplo de una simple aplicación en OpenShift trabajando con 
 
